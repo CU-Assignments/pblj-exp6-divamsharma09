@@ -1,0 +1,36 @@
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+
+class Employee {
+    String name;
+    int age;
+    double salary;
+
+    Employee(String name, int age, double salary) {
+        this.name = name;
+        this.age = age;
+        this.salary = salary;
+    }
+
+    @Override
+    public String toString() {
+        return "Employee{name='" + name + "', age=" + age + ", salary=" + salary + "}";
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        List<Employee> employees = new ArrayList<>();
+        employees.add(new Employee(" rahul", 30, 20000));
+        employees.add(new Employee("Divam ", 25, 50000));
+        employees.add(new Employee("joban", 28, 85000));
+        employees.add(new Employee("vinay", 35, 50000));
+        employees.sort(Comparator.comparing(employee -> employee.name));
+        System.out.println("Sorted by name: " + employees);
+        employees.sort(Comparator.comparingInt(employee -> employee.age));
+        System.out.println("Sorted by age: " + employees);
+        employees.sort(Comparator.comparingDouble(employee -> employee.salary));
+        System.out.println("Sorted by salary: " + employees);
+    }
+}
